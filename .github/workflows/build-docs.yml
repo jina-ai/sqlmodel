@@ -38,10 +38,6 @@ jobs:
       - name: Install Material for MkDocs Insiders
         if: github.event.pull_request.head.repo.fork == false && steps.cache.outputs.cache-hit != 'true'
         run: python -m poetry run pip install mkdocs-material
-      # - uses: actions/cache@v2
-      #   with:
-      #     key: mkdocs-cards-${{ github.ref }}
-      #     path: .cache
       - name: Build Docs
         run: python -m poetry run mkdocs build
       - name: Deploy to Netlify
@@ -51,6 +47,7 @@ jobs:
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           enable-commit-comment: false
+          alias: sqlmodel
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
