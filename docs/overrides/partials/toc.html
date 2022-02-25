@@ -1,0 +1,25 @@
+<nav class="md-nav md-nav--secondary" aria-label="{{ title }}">
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("qa-bot").forEach((x) => {
+        x.addEventListener("keydown", (event) => {
+          event.stopPropagation();
+        });
+      });
+    });
+  </script>
+  <qa-bot
+    server="https://tiangolo-sqlmodel.docsqa.jina.ai"
+    theme="follow"
+    target="_blank"
+    title="SQLModel Docs Bot"
+    description="@tiangolo"
+  >
+    <dl>
+      <dt>You can ask questions about SQLModel. Try</dt>
+      <dd>What is SQLModel?</dd>
+      <dd>How do I use SQLModel?</dd>
+      <dd>Does FastAPI support my language?</dd>
+    </dl>
+  </qa-bot>
+</nav>
